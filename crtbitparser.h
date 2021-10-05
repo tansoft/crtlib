@@ -2,11 +2,17 @@
 
 #include "crtlib.h"
 
-
 #undef setbit
 
 namespace crtfun {
-	//仅处理1字节的数据
+	/**
+	* @brief 位处理类
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	仅处理1字节的数据
+	使用Sample：
+	</pre>*/
 	class crtbitreader
 	{
 	public:

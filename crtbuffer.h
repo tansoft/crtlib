@@ -7,6 +7,13 @@
 #define	CRTMEMBUF_ALLOCSIZE	(1024 * 64)	//64k
 
 namespace crtfun {
+	/**
+	* @brief 内存池管理
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	使用Sample：
+	</pre>*/
 	template<class T>
 	class crtmemmanager{
 	public:

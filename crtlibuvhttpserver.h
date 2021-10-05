@@ -14,6 +14,14 @@
 	#endif
 #endif
 
+/**
+* @brief libuvçš„httpæœåŠ¡å™¨å®ç°
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  ä½¿ç”¨Sampleï¼š
+</pre>*/
+
 namespace crtfun{
 	//current connection status
 	#define CRTHTTPSTATUS_NONE 0
@@ -91,7 +99,7 @@ namespace crtfun{
 			}
 			m_use_auth=auth;
 		}
-		//¼ÓÃÜÊÚÈ¨Ä¬ÈÏÊ¹ÓÃDigest¼ÓÃÜÄ£Ê½ÔöÇ¿°²È«ĞÔ£¬ÔÚ²»Ö§³ÖµÄä¯ÀÀÆ÷·ÃÎÊÊ±£¬Ê¹ÓÃBaseÄ£Ê½ 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨Ä¬ï¿½ï¿½Ê¹ï¿½ï¿½Digestï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ç¿ï¿½ï¿½È«ï¿½Ô£ï¿½ï¿½Ú²ï¿½Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ê¹ï¿½ï¿½BaseÄ£Ê½ 
 		void set_force_use_auth_base_mode(bool bforce){m_force_use_auth_base_mode=bforce;}
 		void set_charset_mode(int mode){m_charset_mode=mode;}
 	protected:
@@ -461,7 +469,7 @@ namespace crtfun{
 								if (file.IsEmpty())
 								{
 									file=_T("/");
-									//ÓÉÓÚ¸ÃÇëÇóÊÇÄ¿Â¼£¬¶øÁĞÄ¿Â¼µÄÊ±ºò£¬»áµ¼ÖÂÏà¶ÔÄ¿Â¼¶¨Î»´íÎó£¬ÕâÊ±Ó¦¸Ã301µ½Ä¿Â¼+/ÏÂ
+									//ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Ê±ï¿½ò£¬»áµ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ó¦ï¿½ï¿½301ï¿½ï¿½Ä¿Â¼+/ï¿½ï¿½
 									StsCode=301;
 									maker.AddHeaders(_T("Location"),orgfile+_T("/"),FALSE);
 								}
@@ -472,7 +480,7 @@ namespace crtfun{
 					}
 				}*/
 			}
-			/*FILE *fp=crtfopen_utf8("F:/Users/barry/Documents/src/svn/edudoc/ÍøÂç/iftop²é¿´Íø¿¨Á÷Á¿.txt","rb");
+			/*FILE *fp=crtfopen_utf8("F:/Users/barry/Documents/src/svn/edudoc/ï¿½ï¿½ï¿½ï¿½/iftopï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.txt","rb");
 			printf("%p\n",fp);
 			fclose(fp);
 */

@@ -4,6 +4,14 @@
 #include "crtstring.h"
 #include "crtsocket.h"
 
+/**
+* @brief 数据结构处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
+
 namespace crtfun{
 	template <typename K>
 	class icrtlrudeletecb{

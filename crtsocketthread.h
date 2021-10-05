@@ -3,6 +3,14 @@
 #include "crtthread.h"
 #include "crtbuffer.h"
 
+/**
+* @brief ç½‘ç»œçº¿ç¨‹ç±»
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  ä½¿ç”¨Sampleï¼š
+</pre>*/
+
 namespace crtfun{
 	class crtsocketthread;
 	class icrtsocketnotify
@@ -17,11 +25,11 @@ namespace crtfun{
 		crtsocketthread(){m_p=this;}
 		virtual ~crtsocketthread(){}
 		void setnotify(icrtsocketnotify *p){m_p=p;}
-		//sendÊÇÒì²½µÄ
+		//sendï¿½ï¿½ï¿½ì²½ï¿½ï¿½
 		void send(SOCKET s,crtmembuf *buf);
 		void add_transfer_socket(SOCKET s,void *addarg);
 		void remove_transfer_socket(SOCKET s);
-		//listen socketÓÉÀàÖÐ´¦Àíaccept£¬acceptºósocket¼ÓÈëtransfersocketÖÐ
+		//listen socketï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½acceptï¿½ï¿½acceptï¿½ï¿½socketï¿½ï¿½ï¿½ï¿½transfersocketï¿½ï¿½
 		void add_listen_socket(SOCKET s,void *addarg);
 		void remove_listen_socket(SOCKET s);
 	protected:

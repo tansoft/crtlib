@@ -2,12 +2,19 @@
 
 #include "crtlib.h"
 #include "crtstring.h"
-#include "rapidxml.hpp"
-#include "rapidxml_print.hpp"
+#include "rapidxml/rapidxml.hpp"
+#include "rapidxml/rapidxml_print.hpp"
 
 using namespace rapidxml;
 
-//helpfile xml_rapidxml_manual.html
+/**
+* @brief xml处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+使用rapidxml库实现，帮助参考 rapidxml/xml_rapidxml_manual.html
+使用Sample：
+</pre>*/
 
 namespace crtfun {
 	class crtxml {

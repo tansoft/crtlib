@@ -2,7 +2,16 @@
 
 #include "crtlib.h"
 #include "crtstring.h"
-#include "deelx.h"
+#include "deelx/deelx.h"
+
+/**
+* @brief 正则表达式处理
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用deelx类库实现
+  使用Sample：
+</pre>*/
 
 namespace crtfun {
 	class crtregex{

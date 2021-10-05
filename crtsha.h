@@ -3,7 +3,14 @@
 #include "crtlib.h"
 #include "crtstring.h"
 
-//library from nettlelib
+/**
+* @brief 正则表达式处理
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用nettlelib类库实现
+  使用Sample：
+</pre>*/
 
 namespace crtfun {
 	typedef enum _crtshatype{

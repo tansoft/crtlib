@@ -3,6 +3,13 @@
 #include "crtlib.h"
 #include "crtstring.h"
 
+/**
+* @brief 系统操作封装类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
 namespace crtfun {
 	static unsigned long crtget_pid() {
 		#ifdef _WIN32

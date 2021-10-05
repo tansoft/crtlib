@@ -12,6 +12,13 @@
 	#endif
 #endif
 
+/**
+* @brief å­—ç¬¦é›†å¤„ç†
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  ä½¿ç”¨Sampleï¼š
+</pre>*/
 namespace crtfun {
 	static bool crtu82u16(const char *u8str, vector<uint16_t>& tmp, size_t u8strlen=string::npos){
 		/* UCS-2 range (hex.) UTF-8 octet sequence (binary)
@@ -361,16 +368,16 @@ namespace crtfun {
 	#endif
 	}
 	/**
-	* @brief È·¶¨×Ö·û´®ÊÇ·ñÎªUTF-8±àÂë
-	* @param src Ô´×Ö·û´®
-	* @return ÊÇ·ñÎªUTF8
+	* @brief È·ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ÎªUTF-8ï¿½ï¿½ï¿½ï¿½
+	* @param src Ô´ï¿½Ö·ï¿½ï¿½ï¿½
+	* @return ï¿½Ç·ï¿½ÎªUTF8
 	*/
 	/**
-		ÒòÎªUTF-8±àÂëÓÐ¸ö¹æÔò:
-			UNICODE±àÂë±íÖÐ±àÂëÐ¡ÓÚ0X7FµÄUTF-8±àÂëÎªÆä±¾Éí(Õ¼Ò»¸ö×Ö½Ú),
-			>=0x80µÄÆä¸ßÎ»Á¬ÐøµÄ1µÄÎ»Êý±íÊ¾±¾×Ö·ûÕ¼ÓÃµÄ×Ö½ÚÊý,ÆäËû×Ö½Ú¾ùÒÔ10¿ªÍ·,
-			Òò´ËÆäËû×Ö·û¾ù±àÂëÎª1110xxxx   10xxxxxx(¶þ½øÖÆ)µÄÐÎÊ½¡£
-			°´ÕÕÕâ¸ö¹æÔò±éÀúÎÄ±¾,´ó¸Å¿ÉÒÔÅÐ¶ÏÊÇ·ñUTF-8±àÂëÁË,µ«ÏÔÈ»²»ÄÜÊ®·ÖÈ·¶¨
+		ï¿½ï¿½ÎªUTF-8ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½:
+			UNICODEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½0X7Fï¿½ï¿½UTF-8ï¿½ï¿½ï¿½ï¿½Îªï¿½ä±¾ï¿½ï¿½(Õ¼Ò»ï¿½ï¿½ï¿½Ö½ï¿½),
+			>=0x80ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ö·ï¿½Õ¼ï¿½Ãµï¿½ï¿½Ö½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú¾ï¿½ï¿½ï¿½10ï¿½ï¿½Í·,
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª1110xxxx   10xxxxxx(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½,ï¿½ï¿½Å¿ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½UTF-8ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½È·ï¿½ï¿½
 	*/
 	static bool is_charset_maybe_utf8(const char *src)
 	{

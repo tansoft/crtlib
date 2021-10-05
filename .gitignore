@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+#
+@eaDir
+@eaDir/*
+*/@eaDir
+.DS_Store
+*/.DS_Store

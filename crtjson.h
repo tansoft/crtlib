@@ -6,9 +6,14 @@
 #include <float.h>
 #include <math.h>
 
-//imp from cJSON library
-//how to use in crttestcase.h testcase_crtjson() 
-
+/**
+* @brief json处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用cJSON library实现
+  使用方法参考 crttestcase.h testcase_crtjson() 
+</pre>*/
 namespace crtfun {
 	typedef enum _crtjsontype{
 		crtjsontype_false,

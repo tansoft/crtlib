@@ -2,6 +2,14 @@
 #include "crtlib.h"
 #include "crtstring.h"
 
+/**
+* @brief 命令行参数处理
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
+
 namespace crtfun {
 	#define crtcmdline_hasarg	0x1	//has value behind argv
 	#define crtcmdline_need		0x2	//the option must be set

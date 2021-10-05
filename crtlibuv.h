@@ -6,6 +6,14 @@
 #include "crtdebug.h"
 #include "libuv/uv.h"
 
+/**
+* @brief libuv封装
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
+
 //mac use follow link to build: -Ltan.h/crtlib/lib/mac -luv -framework CoreServices
 //in main cpp please include crtlibuv.h with define _CRTLIBUV_STATIC_LINKED
 #ifdef _CRTLIBUV_STATIC_LINKED

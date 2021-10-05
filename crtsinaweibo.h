@@ -7,6 +7,14 @@
 
 #define CRTSINAWEIBO_USERAGENT	"Mozilla/5.0 (compatible)"
 
+/**
+* @brief 微博逻辑处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
+
 namespace crtfun {
 	//return success or not, cookie is the success cookie json, result is user info or why fail json
 	static bool crtsinaweibo_get_login_cookie(const char *username,const char *passwd,string &cookies,string &result) {

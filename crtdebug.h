@@ -14,6 +14,13 @@
 #define CRTDEBUG_THREADID	0x8
 #define CRTDEBUG_LEVEL		0x10
 
+/**
+* @brief 调试类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
 namespace crtfun {
 	static void debug_string0(const char *str) {
 		#if (defined(_CONSOLE) || !defined(_WIN32))

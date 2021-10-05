@@ -12,6 +12,14 @@
 	#include <arpa/inet.h>
 #endif
 
+/**
+* @brief 网络处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
+
 namespace crtfun {
 	typedef struct _crtipv4{
 		uint32_t ip;

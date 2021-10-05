@@ -157,6 +157,13 @@ namespace crtfun {
 
 using namespace std;
 
+/**
+* @brief 基本函数
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
 namespace crtfun {
 	//return false to cancel the debug print
 	typedef bool (*crtdebugnotify)(const char *str,const char *orgstr,crtdebuglevel level);

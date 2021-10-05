@@ -14,6 +14,13 @@
 #endif
 
 namespace crtfun{
+	/**
+	* @brief 互斥锁类
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	使用Sample：
+	</pre>*/
 	class crtmutex{
 	public:
 #ifdef _WIN32
@@ -74,6 +81,13 @@ namespace crtfun{
 		pthread_mutexattr_t m_attr;
 #endif
 	};
+	/**
+	* @brief 单例
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	使用Sample：
+	</pre>*/
 	class crtsinglelock{
 	public:
 		explicit crtsinglelock(crtmutex *mtx){m_mtx=mtx;mtx->lock();}
@@ -213,6 +227,13 @@ namespace crtfun{
 		void *adddata;
 		volatile bool exit;
 	}crtthreadfuncdata;
+	/**
+	* @brief 线程类
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	使用Sample：
+	</pre>*/
 	class crtthread : public icrtthreadrun{
 	public:
 		crtthread(){thread=this;}

@@ -3,6 +3,14 @@
 #include "crtlib.h"
 #include "crtbuffer.h"
 
+/**
+* @brief å¯¹è±¡æ“ä½œç±»
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  ä½¿ç”¨Sampleï¼š
+</pre>*/
+
 namespace crtfun {
 	template<typename T>
 	class crtobjmap{
@@ -42,14 +50,14 @@ namespace crtfun {
 			obj->v.pval=new char[strlen(value)+1];
 			strcpy(obj->v.pval,value);
 		}
-		//memµÄÄÚ´æÓÉobjmap¹ÜÀí
+		//memï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½objmapï¿½ï¿½ï¿½ï¿½
 		void setmem(T key, const void* value, unsigned int len) {
 			crtmagicobj *obj=popobj(key);
 			obj->type=crtmagictype_mem;
 			obj->v.pval=new char[len+1];
 			memcpy(obj->v.pval,value,len);
 		}
-		//pointerÊÇÍâ²¿Ö¸Õë
+		//pointerï¿½ï¿½ï¿½â²¿Ö¸ï¿½ï¿½
 		void setpointer(T key, const void* value) {
 			crtmagicobj *obj=popobj(key);
 			obj->type=crtmagictype_pointer;
@@ -164,9 +172,9 @@ namespace crtfun {
 		void setint64(T id,K key,int64_t value) {popmap(id)->setint64(key,value);}
 		void setdouble(T id,K key, double value) {popmap(id)->setdouble(key,value);}
 		void setstring(T id,K key, const char* value) {popmap(id)->setstring(key,value);}
-		//memµÄÄÚ´æÓÉobjmap¹ÜÀí
+		//memï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½objmapï¿½ï¿½ï¿½ï¿½
 		void setmem(T id,K key, const void* value, unsigned int len) {popmap(id)->setmem(key,value);}
-		//pointerÊÇÍâ²¿Ö¸Õë
+		//pointerï¿½ï¿½ï¿½â²¿Ö¸ï¿½ï¿½
 		void setpointer(T id,K key, const void* value) {popmap(id)->setpointer(key,value);}
 		bool ishavekey(T id,K key) {
 			crtobjmap<K> *map=findmap(id);

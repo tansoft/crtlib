@@ -7,7 +7,14 @@
 #include "crtcharset.h"
 
 namespace crtfun {
-	//文件名统一使用utf8，windows函数不用fopen是因为fseeko 2005以上才支持，linux不用fopen是因为ftruncate。 
+	/**
+	* @brief 文件操作类
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	文件名统一使用utf8，windows函数不用fopen是因为fseeko 2005以上才支持，linux不用fopen是因为ftruncate。 
+	使用Sample：
+	</pre>*/
 	class crtfile{
 	public:
 		crtfile(){m_handle=INVALID_HANDLE_VALUE;}

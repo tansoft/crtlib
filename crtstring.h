@@ -23,7 +23,14 @@
 	#define	CRTUINT64_PRINTL L"%I64u"
 #endif
 
-//fixme string装得像个栈变量，但却操作堆空间，而且线程不安全 http://blog.sina.com.cn/s/blog_61469a410100z9ou.html 该问题vc6下肯定存在 
+/**
+* @brief 字符串处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  //fixme：string装得像个栈变量，但却操作堆空间，而且线程不安全 http://blog.sina.com.cn/s/blog_61469a410100z9ou.html 该问题vc6下肯定存在 
+  使用Sample：
+</pre>*/
 
 namespace crtfun {
 	static bool string_startwith(const char *buf,const char *start) {

@@ -6,6 +6,15 @@
 #if !defined(_WIN32) && !defined(__APPLE__)
 	#include <sys/epoll.h>
 #endif
+
+/**
+* @brief ç½‘ç»œæ¨¡åž‹ç±»
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  ä½¿ç”¨Sampleï¼š
+</pre>*/
+
 namespace crtfun{
 	class crtsocketmodel;
 	class icrtsocketlayer{
@@ -202,7 +211,7 @@ namespace crtfun{
 			}
 			int ret=m_layer->select_route(max+1,&rset,&sset,&eset,&ti);
 		#ifdef _WIN32
-			//ÓÉÓÚwin32fdÊÇÊý×é£¬ÒÔsetsÎªÖ÷set£¬Ôö¼ÓÆäËûµÄset
+			//ï¿½ï¿½ï¿½ï¿½win32fdï¿½ï¿½ï¿½ï¿½ï¿½é£¬ï¿½ï¿½setsÎªï¿½ï¿½setï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½set
 			if (ret>0) {
 				FD_COPY(set,rset);
 				memcpy(&set,&rset,sizeof(fd_set));
@@ -262,7 +271,7 @@ namespace crtfun{
 		SOCKET sets[FD_SETSIZE];
 	#endif
 		int max;
-		fd_set orgset;//Ã¿´ÎselectÊ±´Óorgset¸´ÖÆ£¬¼ì²éfdÐÅºÅÊ±ÔòÊ¹ÓÃset£¬ÕâÊ±¾ÍËãµ÷ÓÃadd£¬delµÈÒ²²»»áÓ°Ïì¼ÆÊý
+		fd_set orgset;//Ã¿ï¿½ï¿½selectÊ±ï¿½ï¿½orgsetï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½fdï¿½Åºï¿½Ê±ï¿½ï¿½Ê¹ï¿½ï¿½setï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½addï¿½ï¿½delï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½
 		fd_set rorgset;
 		fd_set sorgset;
 		fd_set eorgset;
@@ -567,7 +576,7 @@ namespace crtfun{
 			opermtx.unlock();
 		}
 		//send is asyn request,you can check sended in callback OnSended
-		//bufÒÑÓÉÏµÍ³½Ó¹Ü£¬µ÷ÓÃÍê±Ïºó£¬ÎÞÂÛÊÇ·ñÕýÈ·£¬¶¼²»ÓÃ¹ÜÁË 
+		//bufï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ó¹Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ 
 		virtual bool send(SOCKET fd,crtblockbuffer *buf)
 		{
 			if (!buf) return false;
@@ -599,7 +608,7 @@ namespace crtfun{
 				selectpool->del(fd);
 				udpselectpool->del(fd);
 				sendpool->del(fd);
-				//fixme ÓÐ¸öÎÊÌâ¾ÍÊÇresendÀïÓÐÄ³¸öbuf£¬È»ºó¸Õ¼Óµ½sendqueue£¬·¢ËÍÊ§°ÜfreesocketÊ±£¬Ö±½Ó¾Í°ÑsendqueueµÄbufÊÍ·ÅÁË£¬resendÔÙ·¢¾Í»áÓÐÎÊÌâ
+				//fixme ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½resendï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½bufï¿½ï¿½È»ï¿½ï¿½Õ¼Óµï¿½sendqueueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½freesocketÊ±ï¿½ï¿½Ö±ï¿½Ó¾Í°ï¿½sendqueueï¿½ï¿½bufï¿½Í·ï¿½ï¿½Ë£ï¿½resendï¿½Ù·ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				releasebuf((crtblockbuffer *)fdstate.getpointer(fd,objectmap_sendbuf),true);
 				releasebuf((crtblockbuffer *)fdstate.getpointer(fd,objectmap_recvbuf));
 				fdstate.remove(fd);
@@ -629,7 +638,7 @@ namespace crtfun{
 					set<SOCKET>*fds=connectpool->allfd();
 					set<SOCKET>::iterator it=fds->begin();
 					while(it!=fds->end()) {
-						//fixme É¾³ýÊÇ·ñ»áÒýÆðsetÎÊÌâ
+						//fixme É¾ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½setï¿½ï¿½ï¿½ï¿½
 						if (lastti - connecttimeout > fdstate.getuint(*it,objectmap_lastti)) {
 							crtdebugln("[socketmodel]conn timeout socket %u",*it);
 							free_socket(*it++);
@@ -741,7 +750,7 @@ namespace crtfun{
 											buf=tmp;
 										}
 									}
-									//bufÖ¸ÕëÒÑ¿¼ÂÇÕâÐ©Çé¿ö£º°üÀ¨onreceive·µ»Ø0£¬Êý¾ÝÔÝÎÞ·¨´¦Àí£¬Ã»ÓÐeventcb£¬Êý¾Ý¶¼ÒÑ´¦Àí
+									//bufÖ¸ï¿½ï¿½ï¿½Ñ¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½onreceiveï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½eventcbï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
 									if (!bfreed) fdstate.setpointer(fd,objectmap_recvbuf,buf);
 									//speed limit
 									//fixme, the select event will still set in next time call?
@@ -795,7 +804,7 @@ namespace crtfun{
 											buf=tmp;
 										}
 									}
-									//bufÖ¸ÕëÒÑ¿¼ÂÇÕâÐ©Çé¿ö£º°üÀ¨onreceive·µ»Ø0£¬Êý¾ÝÔÝÎÞ·¨´¦Àí£¬Ã»ÓÐeventcb£¬Êý¾Ý¶¼ÒÑ´¦Àí
+									//bufÖ¸ï¿½ï¿½ï¿½Ñ¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½onreceiveï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½eventcbï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
 									if (!bfreed) fdstate.setpointer(fd,objectmap_recvbuf,buf);
 									//speed limit
 									//fixme, the select event will still set in next time call?

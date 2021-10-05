@@ -3,6 +3,13 @@
 #include "crtlib.h"
 #include "crtsocket.h"
 
+/**
+* @brief Http处理类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
 namespace crtfun {
 	enum cb_type{
 		cb_httpdata,//http数据

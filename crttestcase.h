@@ -21,6 +21,13 @@
 #include "crtthread.h"
 #include <assert.h>
 
+/**
+* @brief 测试用例类
+* @author Barry(barrytan@21cn.com,QQ:20962493)
+*/
+/**<pre>
+  使用Sample：
+</pre>*/
 namespace crtfun {
 	static string crtcmdline_help(const char *key,const char *arg) {crtdebug("help function for callback,key:%s,arg:%s\n",key,arg);return "";}
 	static string crtcmdline_parser(const char *key,const char *arg) {crtdebug("parser function for callback,key:%s,arg:%s\n",key,arg);return "";}

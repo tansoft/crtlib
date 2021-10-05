@@ -4,6 +4,13 @@
 #include "crtstring.h"
 
 namespace crtfun {
+	/**
+	* @brief Base64处理
+	* @author Barry(barrytan@21cn.com,QQ:20962493)
+	*/
+	/**<pre>
+	使用Sample：
+	</pre>*/
 	class crtbase64{
 	public:
 		static string encode_str(string str) {return encode((const void *)str.c_str(),str.length());}
