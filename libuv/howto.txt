@@ -1,0 +1,14 @@
+build in windows:
+way 1: svn,python2, run vcbuild.bat,just support over vs2008
+way 2:
+1.new empty static lib project
+2.add files in path: src src/win include include/uv-private
+3.project settings:
+Additional Include:include;include\uv-private;src
+preprocessor definitions
+ common: WIN32;_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_WIN32_WINNT=0x0600;EIO_STACKSIZE=262144;_GNU_SOURCE;
+ debug: DEBUG;_DEBUG
+ release: NDEBUG
+runtime library:multi-threaded/multi-threaded-debug
+not using precompiled headers
+in vs2003,just enable some typedef and struct define in mingw(because of 2003 do not have)

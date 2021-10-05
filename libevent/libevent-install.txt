@@ -1,0 +1,9 @@
+linux & mac:
+./configure
+make
+sudo make install
+
+windows:
+vsenv2008.bat
+nmake /f Makefile.nmake
+copy include & libs
