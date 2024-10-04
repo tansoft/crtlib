@@ -185,7 +185,7 @@ namespace crtfun {
 		crtdebug("[HTTP][CONNECT]%s\n",url);
 		s = build_http_request(url, cb, add, postdata, sockettimeout);
 		if (s == INVALID_SOCKET) return 0;
-		crtdebug("[HTTP][SENDED]\n",url);
+		crtdebug("[HTTP][SENDED]\n");
 		r = ensure_recv_http_header(s, tmpbuf, 4096, httpheader, sockettimeout);
 		crtdebug("[HTTP][RECV]remain:%d,header:%s\n",r,httpheader.c_str());
 		if (r < 0) {
