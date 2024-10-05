@@ -27,6 +27,7 @@ namespace crtfun {
 	static void setup_http_global_retrytimes(int retrytimes){crtlib::instance()->http_global_retrytimes=retrytimes;}
 	static void set_last_http_error(unsigned int result) {crtlib::instance()->http_last_errcode=result;}
 	static unsigned int get_last_http_error() {return crtlib::instance()->http_last_errcode;}
+	static void setup_http_post_json(bool json) {crtlib::instance()->http_global_post_json = json;}
 	//处理http header,如果多收的正文,通过buf返回,返回值-1出错,>=0为正文大小
 	static int ensure_recv_http_header(SOCKET s, char *buf, int buflen, string &header, int timeout) {
 		int len;
@@ -63,7 +64,7 @@ namespace crtfun {
 		}
 		return 0;
 	}
-	static string crtmap2post(const map<string,string> &postdata,bool bupper=false) {
+	/*static string crtmap2post(const map<string,string> &postdata,bool bupper=false) {
 		string ret;
 		map<string,string>::const_iterator it=postdata.begin();
 		while(it!=postdata.end()) {
@@ -72,16 +73,18 @@ namespace crtfun {
 			it++;
 		}
 		return ret;
-	}
+	}*/
+	#define HTTP_HEADER_MAXSIZE 8192
 	static SOCKET build_http_request(const char *url, download_process cb, const void *add,const char *postdata, int sockettimeout) {
 		uint32_t ip;
 		uint16_t port;
 		time_t cms;
 		const char *tmp1, *tmp2;
-		char tmpbuf[8192], tmpbuf2[1024];
+		char tmpbuf[HTTP_HEADER_MAXSIZE], tmpbuf2[1024];
 		SOCKET s;
 		sockaddr_in addr;
 		unsigned int postlen;
+		size_t tmpsize;
 		if (strncmp(url, "http://", 7) == 0) url += 7;
 		tmp1 = strstr(url, ":");
 		tmp2 = strstr(url, "/");
@@ -132,8 +135,9 @@ namespace crtfun {
 		strcpy(tmpbuf, postdata?"POST ":"GET ");
 		strcat(tmpbuf, tmp2);
 		strcat(tmpbuf, " HTTP/1.1\r\nAccept: */*");
-		sprintf(tmpbuf+strlen(tmpbuf), "\r\nHost: %s\r\nUser-Agent: %s", tmpbuf2, crtlib::instance()->http_user_agent);
-		if (cb) cb(cb_buildhttpheader, 0, 0, tmpbuf, 8192, add);
+		tmpsize = strlen(tmpbuf);
+		snprintf(tmpbuf + tmpsize,HTTP_HEADER_MAXSIZE - tmpsize, "\r\nHost: %s\r\nUser-Agent: %s", tmpbuf2, crtlib::instance()->http_user_agent);
+		if (cb) cb(cb_buildhttpheader, 0, 0, tmpbuf, HTTP_HEADER_MAXSIZE, add);
 		if (postdata)
 		{
 			if (strncmp("[crtbin]",postdata,8)==0) {
@@ -141,8 +145,12 @@ namespace crtfun {
 				postdata=postdata+strlen(postdata)+1;
 			} else
 				postlen=(unsigned int)(strlen(postdata)/*+4*/);
-			sprintf(tmpbuf+strlen(tmpbuf), "\r\nContent-Length: %u",postlen);
-			strcat(tmpbuf,"\r\nContent-Type: application/x-www-form-urlencoded");
+			tmpsize = strlen(tmpbuf);
+			snprintf(tmpbuf + tmpsize, HTTP_HEADER_MAXSIZE - tmpsize, "\r\nContent-Length: %u",postlen);
+			if (crtlib::instance()->http_global_post_json)
+				strcat(tmpbuf,"\r\nContent-Type: application/json");
+			else
+				strcat(tmpbuf,"\r\nContent-Type: application/x-www-form-urlencoded");
 		}
 		strcat(tmpbuf, "\r\n\r\n");
 		crtdebug("[HTTP][SEND]header:%s\n",tmpbuf);
@@ -185,7 +193,7 @@ namespace crtfun {
 		crtdebug("[HTTP][CONNECT]%s\n",url);
 		s = build_http_request(url, cb, add, postdata, sockettimeout);
 		if (s == INVALID_SOCKET) return 0;
-		crtdebug("[HTTP][SENDED]\n",url);
+		crtdebug("[HTTP][SENDED]\n");
 		r = ensure_recv_http_header(s, tmpbuf, 4096, httpheader, sockettimeout);
 		crtdebug("[HTTP][RECV]remain:%d,header:%s\n",r,httpheader.c_str());
 		if (r < 0) {

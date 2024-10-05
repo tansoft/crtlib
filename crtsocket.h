@@ -134,28 +134,28 @@ namespace crtfun {
 	static string inet_ntoa_safe_u32n(uint32_t ip){
 		char dat[20];
 		unsigned char *buf = (unsigned char *) &ip;
-		sprintf(dat,"%u.%u.%u.%u",(unsigned int)buf[0],(unsigned int)buf[1],(unsigned int)buf[2],(unsigned int)buf[3]);
+		snprintf(dat,20,"%u.%u.%u.%u",(unsigned int)buf[0],(unsigned int)buf[1],(unsigned int)buf[2],(unsigned int)buf[3]);
 		return dat;
 	}
 	//因为系统的存在全局buffer问题
 	static string inet_ntoa_safe(sockaddr_in *addr){
 		char dat[20];
 		unsigned char *buf = (unsigned char *) &addr->sin_addr;
-		sprintf(dat,"%u.%u.%u.%u",(unsigned int)buf[0],(unsigned int)buf[1],(unsigned int)buf[2],(unsigned int)buf[3]);
+		snprintf(dat,20,"%u.%u.%u.%u",(unsigned int)buf[0],(unsigned int)buf[1],(unsigned int)buf[2],(unsigned int)buf[3]);
 		return dat;
 	}
 	//ip and port
 	static string print_host(sockaddr_in *addr){
 		char dat[25];
 		unsigned char *buf = (unsigned char *) &addr->sin_addr;
-		sprintf(dat,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
+		snprintf(dat,25,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
 			(unsigned int)buf[2],(unsigned int)buf[3],(unsigned int)ntohs(addr->sin_port));
 		return dat;
 	}
 	static string print_host(crtipv4 ip){
 		char dat[25];
 		unsigned char *buf = (unsigned char *) &ip.ip;
-		sprintf(dat,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
+		snprintf(dat,25,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
 			(unsigned int)buf[2],(unsigned int)buf[3],(unsigned int)ntohs(ip.port));
 		return dat;
 	}
@@ -163,7 +163,7 @@ namespace crtfun {
 	static string print_host(uint32_t ip,uint16_t port){
 		char dat[25];
 		unsigned char *buf = (unsigned char *) &ip;
-		sprintf(dat,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
+		snprintf(dat,25,"%u.%u.%u.%u:%u",(unsigned int)buf[0],(unsigned int)buf[1],
 			(unsigned int)buf[2],(unsigned int)buf[3],port);
 		return dat;
 	}

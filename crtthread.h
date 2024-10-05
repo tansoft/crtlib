@@ -351,11 +351,11 @@ namespace crtfun{
 #endif
 		}
 	};
-	static uint32_t crtthreadid(){
+	static unsigned long crtthreadid(){
 #ifdef _WIN32
-		return GetCurrentThreadId();
+		return (unsigned long)GetCurrentThreadId();
 #else
-		return (uint32_t)(long)pthread_self();
+		return (unsigned long)pthread_self();
 #endif
 	}
 };

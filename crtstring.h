@@ -165,7 +165,7 @@ namespace crtfun {
 		const unsigned char*tmp=(const unsigned char *)buf;
 		for(size_t i=0;i<buflen;i++) {
 			str+=push_backprefix;
-			sprintf(tmpbuf,"%02x",*(tmp+i));
+			snprintf(tmpbuf,4,"%02x",*(tmp+i));
 			str+=tmpbuf;
 		}
 		return str;
@@ -175,7 +175,7 @@ namespace crtfun {
 		char buf[65535];
 		va_list a;
 		va_start(a,format);
-		vsprintf(buf,format,a);
+		vsnprintf(buf,65535,format,a);
 		va_end(a);
 		return buf;
 	}
@@ -225,7 +225,7 @@ namespace crtfun {
 				}
 				else
 				{
-					sprintf(tmpbuf,perfix,*tmptmp);
+					snprintf(tmpbuf,4,perfix,*tmptmp);
 					tmpbuf+=3;
 					tmptmp++;
 				}
@@ -298,14 +298,14 @@ namespace crtfun {
 		if (dv>=10) keybuf="%.f%s";
 		else keybuf="%.1f%s";
 		char strbuf[20];
-		sprintf(strbuf,keybuf,dv,d);
+		snprintf(strbuf,20,keybuf,dv,d);
 		string ret=strbuf;
 		ret+=postfix;
 		return ret;
 	}
 	static string crtl2s(unsigned long value) {
 		char buf[64];
-		sprintf(buf,"%lu",value);
+		snprintf(buf,64,"%lu",value);
 		return buf;
 	}
 	static string get_http_param(string url,string key)

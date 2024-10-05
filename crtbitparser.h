@@ -1,6 +1,7 @@
 #pragma once
 
 #include "crtlib.h"
+#include <algorithm>
 
 #undef setbit
 
@@ -73,7 +74,7 @@ namespace crtfun {
 					m_nbufferlen=0;
 					m_nbitlen=0;
 				}
-				unsigned int size=max(nbitlen/4,1024);
+				unsigned int size=std::max(nbitlen/4,(unsigned int)1024);
 				m_pbuffer=new unsigned char[size];//init twice length of setbuffer
 				if (!m_pbuffer) return false;
 				m_nbufferlen=size;
@@ -90,7 +91,7 @@ namespace crtfun {
 					m_nbufferlen=0;
 					m_nbitlen=0;
 				}
-				unsigned int size=max(nbitlen/4,1024);
+				unsigned int size=std::max(nbitlen/4,(unsigned int)1024);
 				m_pbuffer=new unsigned char[size];//init twice length of setbuffer
 				if (!m_pbuffer) return false;
 				memset(m_pbuffer,0,size);
@@ -147,7 +148,7 @@ namespace crtfun {
 			const unsigned char maskmapn[]={0x80,0x40,0x20,0x10,0x8,0x4,0x2,0x1};
 			if (nbitoffest>=m_nbufferlen*8) {
 				//Realloc buffer
-				unsigned int size=max(nbitoffest/4,1024);
+				unsigned int size=std::max(nbitoffest/4,(unsigned int)1024);
 				unsigned char *tmp=new unsigned char[size];
 				if (!tmp) return false;
 				memset(tmp,0,size);
@@ -195,7 +196,7 @@ namespace crtfun {
 			unsigned int plen=(m_nbitlen+7)/8;
 			char buf[5];
 			for(unsigned int i=0;i<plen;i++) {
-				sprintf(buf,"%02x",*(m_pbuffer+i));
+				snprintf(buf,5,"%02x",*(m_pbuffer+i));
 				ret+=buf;
 			}
 			return ret;

@@ -179,6 +179,7 @@ namespace crtfun {
 					lib->http_last_errcode=0;
 					lib->http_global_retrytimes=0;
 					lib->http_global_timeout=30000;//default connect is 30 sec
+					lib->http_global_post_json=false;
 					lib->debugfilter[0]='\0';
 					lib->debugfilter[1]='\0';
 					lib->debugfilterregex=NULL;
@@ -192,6 +193,7 @@ namespace crtfun {
 			volatile unsigned int http_last_errcode;
 			int http_global_retrytimes;
 			int http_global_timeout;
+			bool http_global_post_json;
 			char debugfilter[256];
 			void *debugfilterregex;
 			int debugformat;

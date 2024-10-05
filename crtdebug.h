@@ -5,6 +5,7 @@
 #include "crtstring.h"
 #include "crtregex.h"
 #include "crtthread.h"
+#include "crtsystem.h"
 #endif
 
 #define CRTDEBUG_MAXLENGTH	65535
@@ -13,6 +14,7 @@
 #define CRTDEBUG_LN			0x4
 #define CRTDEBUG_THREADID	0x8
 #define CRTDEBUG_LEVEL		0x10
+#define CRTDEBUG_PROCESSID	0x20
 
 /**
 * @brief 调试类
@@ -97,20 +99,24 @@ namespace crtfun {
 		if (!(flags&CRTDEBUG_NODATE)) {
 			time_t st=time(NULL);
 			struct tm *t=localtime(&st);
-			sprintf(buf+off,"[%02d-%02d %02d:%02d:%02d.%03d]",t->tm_mon+1,t->tm_mday,t->tm_hour,t->tm_min,t->tm_sec,get_ms_tick()%1000);
-			off+=strlen(buf);
+			snprintf(buf+off,CRTDEBUG_MAXLENGTH-off,"[%02d-%02d %02d:%02d:%02d.%03d]",t->tm_mon+1,t->tm_mday,t->tm_hour,t->tm_min,t->tm_sec,get_ms_tick()%1000);
+			off=strlen(buf);
 		}
 		if (flags&CRTDEBUG_TS) {
-			sprintf(buf+off,"[%u]",(unsigned int)time(NULL));
-			off+=strlen(buf);
+			snprintf(buf+off,CRTDEBUG_MAXLENGTH-off,"[%u]",(unsigned int)time(NULL));
+			off=strlen(buf);
+		}
+		if (flags&CRTDEBUG_PROCESSID){
+			snprintf(buf+off,CRTDEBUG_MAXLENGTH-off,"[%lu]", crtget_pid());
+			off=strlen(buf);
 		}
 		if (flags&CRTDEBUG_THREADID){
-			sprintf(buf+off,"[%u]",crtthreadid());
-			off+=strlen(buf);
+			snprintf(buf+off,CRTDEBUG_MAXLENGTH-off,"[%lu]", crtthreadid());
+			off=strlen(buf);
 		}
 		if (flags&CRTDEBUG_LEVEL){
-			sprintf(buf+off,"[%s]",_crtlevelname(level));
-			off+=strlen(buf);
+			snprintf(buf+off,CRTDEBUG_MAXLENGTH-off,"[%s]", _crtlevelname(level));
+			off=strlen(buf);
 		}
 		size_t ret=vsnprintf(buf+off,CRTDEBUG_MAXLENGTH-off-1,str,a)+off;
 		buf[CRTDEBUG_MAXLENGTH-1]='\0';
