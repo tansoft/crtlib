@@ -353,7 +353,9 @@ namespace crtfun {
 			retrytimes--;
 			if ((int)(sts / 100) == 2) break;
 			ret.clear();
-			crtdebug("[HTTP][RETRY]%s\n",url);
+                        if (retrytimes>=0) {
+			        crtdebug("[HTTP][RETRY]%s\n",url);
+                        }
 		}
 		if (psts) *psts=sts;
 		return ret;
@@ -395,7 +397,9 @@ namespace crtfun {
 			if ((int)(sts / 100) == 2) break;
 			fclose(ret);
 			ret=fopen(filename, "wb");
-			crtdebug("[HTTP][RETRY]%s\n",url);
+                        if (retrytimes>=0) {
+			        crtdebug("[HTTP][RETRY]%s\n",url);
+                        }
 		}
 		fclose(ret);
 		if (sts==2) sts=-1;
